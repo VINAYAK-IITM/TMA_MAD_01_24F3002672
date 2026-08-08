@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>User Dashboard</h2>
+
+<p>
+
+    Welcome, {{ user.name }}
+
+</p>
+
+<p>
+
+    Use the options below to explore treks, manage your bookings, and update your profile.
+
+</p>
+
+<br>
+
+<a href="/user/treks"><button>View Available Treks</button></a>
+
+<a href="/user/bookings"><button>My Bookings</button></a>
+
+<a href="/user/profile"><button>Edit Profile</button></a>
+
+<br><br>
+
+<h3>Quick Information</h3>
+
+<table>
+
+    <tr>
+
+        <th>Feature</th>
+
+        <th>Description</th>
+
+    </tr>
+
+    <tr>
+
+        <td>Available Treks</td>
+
+        <td>View all open treks and book your preferred trek.</td>
+
+    </tr>
+
+    <tr>
+
+        <td>My Bookings</td>
+
+        <td>View your booking status and trekking history.</td>
+
+    </tr>
+
+    <tr>
+
+        <td>Edit Profile</td>
+
+        <td>Update your personal details whenever required.</td>
+
+    </tr>
+
+</table>
+
+{% endblock %}

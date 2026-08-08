@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Vivax - Trekking Management Application</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Welcome to Vivax - Trekking Management Application</h1>
+
+        <nav>
+
+            <a href="/">Home</a>
+
+            {% if session.get("user_id") %}
+
+            {% if session.get("role") == "admin" %}
+
+            <a href="/admin/dashboard">Dashboard</a>
+
+            <a href="/admin/treks">Treks</a>
+
+            <a href="/admin/staff">Staff</a>
+
+            <a href="/admin/users">Users</a>
+
+            <a href="/admin/bookings">Bookings</a>
+
+            <a href="/admin/history">History</a>
+
+            <a href="/admin/search">Search</a>
+
+            {% elif session.get("role") == "staff" %}
+
+            <a href="/staff/dashboard">Dashboard</a>
+
+            {% elif session.get("role") == "user" %}
+
+            <a href="/user/dashboard">Dashboard</a>
+
+            <a href="/user/treks">Available Treks</a>
+
+            <a href="/user/bookings">My Bookings</a>
+
+            <a href="/user/profile">Profile</a>
+
+            {% endif %}
+
+            <a href="/logout">Logout</a>
+
+            {% else %}
+
+            <a href="/login">Login</a>
+
+            <a href="/register/user">User Register</a>
+
+            <a href="/register/staff">Staff Register</a>
+
+            {% endif %}
+
+        </nav>
+
+    </header>
+
+
+    <div class="container">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+
+    <footer>
+
+        <p>
+            Copyright © 2026 | Vivax - Trekking Management Application | VINAYAK VASHISHTHA (24F3002672)
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

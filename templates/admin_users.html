@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Manage Users</h2>
+
+<p>
+
+    View all registered users and manage their accounts.
+
+</p>
+
+<br>
+
+{% if users %}
+
+<table>
+
+    <tr>
+
+        <th>ID</th>
+
+        <th>Name</th>
+
+        <th>Email</th>
+
+        <th>Contact</th>
+
+        <th>Account Status</th>
+
+        <th>Action</th>
+
+    </tr>
+
+    {% for user in users %}
+
+    <tr>
+
+        <td>{{ user.id }}</td>
+
+        <td>{{ user.name }}</td>
+
+        <td>{{ user.email }}</td>
+
+        <td>{{ user.contact }}</td>
+
+        <td>
+
+            {% if user.blacklisted %}
+
+            Blacklisted
+
+            {% else %}
+
+            Active
+
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            {% if not user.blacklisted %}
+
+            <a href="/admin/blacklist-user/{{ user.id }}">Blacklist</a>
+
+            {% else %}
+
+            Blacklisted
+
+            {% endif %}
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<p>
+
+    No users found.
+
+</p>
+
+{% endif %}
+
+{% endblock %}

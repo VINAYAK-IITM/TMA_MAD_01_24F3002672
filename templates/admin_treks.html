@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Manage Treks</h2>
+
+<p>
+
+    View, edit, or remove trekking events from the system.
+
+</p>
+
+<br>
+
+{% if treks %}
+
+<table>
+
+    <tr>
+
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Difficulty</th>
+        <th>Duration</th>
+        <th>Slots</th>
+        <th>Status</th>
+        <th>Staff</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+    </tr>
+
+    {% for trek in treks %}
+
+    <tr>
+
+        <td>{{ trek.id }}</td>
+
+        <td>{{ trek.trek_name }}</td>
+
+        <td>{{ trek.location }}</td>
+
+        <td>{{ trek.difficulty }}</td>
+
+        <td>{{ trek.duration }}</td>
+
+        <td>{{ trek.available_slots }}</td>
+
+        <td>{{ trek.status }}</td>
+
+        <td>
+
+            {% if trek.staff %}
+
+            {{ trek.staff.name }}
+
+            {% else %}
+
+            Not Assigned
+
+            {% endif %}
+
+        </td>
+
+        <td><a href="/admin/edit-trek/{{ trek.id }}">Edit</a></td>
+
+        <td><a href="/admin/delete-trek/{{ trek.id }}">Delete</a></td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<p>
+
+    No treks have been added yet.
+
+</p>
+
+{% endif %}
+
+{% endblock %}

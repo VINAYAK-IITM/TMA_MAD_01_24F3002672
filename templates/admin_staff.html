@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Manage Trek Staff</h2>
+
+<p>
+
+Approve staff registrations, assign treks, and manage staff accounts.
+
+</p>
+
+<br>
+
+{% if staffs %}
+
+<table>
+
+<tr>
+
+    <th>ID</th>
+
+    <th>Name</th>
+
+    <th>Email</th>
+
+    <th>Contact</th>
+
+    <th>Approval Status</th>
+
+    <th>Account Status</th>
+
+    <th>Approve</th>
+
+    <th>Blacklist</th>
+
+    <th>Assign Trek</th>
+
+</tr>
+
+{% for staff in staffs %}
+
+<tr>
+
+    <td>{{ staff.id }}</td>
+
+    <td>{{ staff.name }}</td>
+
+    <td>{{ staff.email }}</td>
+
+    <td>{{ staff.contact }}</td>
+
+    <td>
+
+        {% if staff.approved %}
+
+            Approved
+
+        {% else %}
+
+            Pending
+
+        {% endif %}
+
+    </td>
+
+    <td>
+
+        {% if staff.blacklisted %}
+
+            Blacklisted
+
+        {% else %}
+
+            Active
+
+        {% endif %}
+
+    </td>
+
+    <td>
+
+        {% if not staff.approved %}
+
+            <a href="/admin/approve-staff/{{ staff.id }}">Approve</a>
+
+        {% else %}
+
+            Approved
+
+        {% endif %}
+
+    </td>
+
+    <td>
+
+        {% if not staff.blacklisted %}
+
+            <a href="/admin/blacklist-staff/{{ staff.id }}">Blacklist</a>
+
+        {% else %}
+
+            Blacklisted
+
+        {% endif %}
+
+    </td>
+
+    <td><a href="/admin/assign-trek/{{ staff.id }}">Assign Trek</a></td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<p>
+
+No staff members found.
+
+</p>
+
+{% endif %}
+
+{% endblock %}

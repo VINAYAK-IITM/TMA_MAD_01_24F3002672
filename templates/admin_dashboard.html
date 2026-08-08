@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+
+<p>
+
+Welcome, Administrator
+
+</p>
+
+<h3>Application Overview</h3>
+
+<table>
+
+<tr>
+
+    <th>Total Treks</th>
+
+    <td>{{ total_treks }}</td>
+
+</tr>
+
+<tr>
+
+    <th>Total Users</th>
+
+    <td>{{ total_users }}</td>
+
+</tr>
+
+<tr>
+
+    <th>Total Staff</th>
+
+    <td>{{ total_staff }}</td>
+
+</tr>
+
+<tr>
+
+    <th>Total Bookings</th>
+
+    <td>{{ total_bookings }}</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<h3>Management</h3>
+
+<a href="/admin/add-trek"><button>Add Trek</button></a>
+
+<a href="/admin/treks"><button>Manage Treks</button></a>
+
+<a href="/admin/users"><button>View Users</button></a>
+
+<a href="/admin/staff"><button>View Staff</button></a>
+
+<a href="/admin/bookings"><button>View Bookings</button></a>
+
+<a href="/admin/history"><button>Trek History</button></a>
+
+<a href="/admin/search"><button>Search</button></a>
+
+{% endblock %}

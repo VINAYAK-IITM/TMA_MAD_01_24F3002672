@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Manage Trek</h2>
+
+<form method="POST">
+
+    <label>Available Slots</label>
+
+    <input type="number" name="available_slots" value="{{ trek.available_slots }}" required>
+
+    <label>Status</label>
+
+    <select name="status">
+
+        <option value="Open" {% if trek.status=="Open" %}selected{% endif %}>Open</option>
+
+        <option value="Closed" {% if trek.status=="Closed" %}selected{% endif %}>Closed</option>
+
+        <option value="Started" {% if trek.status=="Started" %}selected{% endif %}>Started</option>
+
+        <option value="Completed" {% if trek.status=="Completed" %}selected{% endif %}>Completed</option>
+
+    </select>
+
+    <button type="submit">Update Trek</button>
+
+</form>
+
+<br>
+
+<h3>Participants</h3>
+
+<table>
+
+    <tr>
+
+        <th>Name</th>
+
+        <th>Email</th>
+
+        <th>Booking Status</th>
+
+    </tr>
+
+    {% for booking in trek.bookings %}
+
+    <tr>
+
+        <td>{{ booking.user.name }}</td>
+
+        <td>{{ booking.user.email }}</td>
+
+        <td>{{ booking.status }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

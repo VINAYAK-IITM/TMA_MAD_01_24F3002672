@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Historical Trek Data</h2>
+
+<h3>Completed Treks</h3>
+
+<table>
+
+    <tr>
+
+        <th>Trek Name</th>
+        <th>Location</th>
+        <th>Assigned Staff</th>
+        <th>Total Participants</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+
+    </tr>
+
+    {% if treks %}
+
+    {% for trek in treks %}
+
+    <tr>
+
+        <td>{{ trek.trek_name }}</td>
+
+        <td>{{ trek.location }}</td>
+
+        <td>
+
+            {% if trek.staff %}
+
+            {{ trek.staff.name }}
+
+            {% else %}
+
+            Not Assigned
+
+            {% endif %}
+
+        </td>
+
+        <td>{{ trek.bookings|length }}</td>
+
+        <td>{{ trek.start_date }}</td>
+
+        <td>{{ trek.end_date }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+    {% else %}
+
+    <tr><td colspan="6">No completed treks found.</td></tr>
+
+    {% endif %}
+
+</table>
+
+<br>
+
+<h3>Completed Bookings</h3>
+
+<table>
+
+    <tr>
+
+        <th>User</th>
+
+        <th>Trek</th>
+
+        <th>Location</th>
+
+        <th>Booking Date</th>
+
+        <th>Status</th>
+
+    </tr>
+
+    {% if bookings %}
+
+    {% for booking in bookings %}
+
+    <tr>
+
+        <td>{{ booking.user.name }}</td>
+
+        <td>{{ booking.trek.trek_name }}</td>
+
+        <td>{{ booking.trek.location }}</td>
+
+        <td>{{ booking.booking_date }}</td>
+
+        <td>{{ booking.status }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+    {% else %}
+
+    <tr><td colspan="4">No completed bookings found.</td></tr>
+
+    {% endif %}
+
+</table>
+
+{% endblock %}

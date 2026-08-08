@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Assign Trek</h2>
+
+<form method="POST">
+
+    <label>Select Trek</label>
+
+    <select name="trek_id">
+
+        {% for trek in treks %}
+
+        <option value="{{ trek.id }}">
+
+            {{ trek.trek_name }}
+
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <button type="submit">Assign Trek</button>
+
+</form>
+
+{% endblock %}

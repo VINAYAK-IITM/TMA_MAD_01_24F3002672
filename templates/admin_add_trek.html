@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Add Trek</h2>
+
+<form method="POST">
+
+    <label>Trek Name</label><input type="text" name="trek_name" required>
+
+    <label>Location</label><input type="text" name="location" required>
+
+    <label>Difficulty</label>
+
+    <select name="difficulty">
+
+        <option>Easy</option>
+
+        <option>Moderate</option>
+
+        <option>Hard</option>
+
+    </select>
+
+    <label>Duration (Days)</label><input type="number" name="duration" required>
+
+    <label>Available Slots</label><input type="number" name="available_slots" required>
+
+    <label>Status</label>
+
+    <select name="status">
+
+        <option>Pending</option>
+
+        <option>Approved</option>
+
+        <option>Open</option>
+
+        <option>Closed</option>
+
+        <option>Completed</option>
+
+    </select>
+
+    <label>Start Date</label><input type="date" name="start_date" required>
+
+    <label>End Date</label><input type="date" name="end_date" required>
+
+    <button type="submit">Add Trek</button>
+
+</form>
+
+{% endblock %}

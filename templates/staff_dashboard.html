@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Staff Dashboard</h2>
+
+<p>
+
+    Welcome! Here are the treks assigned to you.
+
+</p>
+
+{% if treks %}
+
+<table>
+
+    <tr>
+
+        <th>ID</th>
+
+        <th>Trek Name</th>
+
+        <th>Location</th>
+
+        <th>Start Date</th>
+
+        <th>End Date</th>
+
+        <th>Available Slots</th>
+
+        <th>Status</th>
+
+        <th>Participants</th>
+
+        <th>Manage</th>
+
+    </tr>
+
+    {% for trek in treks %}
+
+    <tr>
+
+        <td>{{ trek.id }}</td>
+
+        <td>{{ trek.trek_name }}</td>
+
+        <td>{{ trek.location }}</td>
+
+        <td>{{ trek.start_date }}</td>
+
+        <td>{{ trek.end_date }}</td>
+
+        <td>{{ trek.available_slots }}</td>
+
+        <td>{{ trek.status }}</td>
+
+        <td>{{ trek.bookings|length }}</td>
+
+        <td><a href="/staff/manage-trek/{{ trek.id }}">Manage</a></td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<p>
+
+    No treks have been assigned to you yet.
+
+</p>
+
+{% endif %}
+
+{% endblock %}

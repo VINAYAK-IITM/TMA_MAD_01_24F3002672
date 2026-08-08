@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Search</h2>
+
+<form method="POST">
+
+    <label>Search Category</label>
+
+    <select name="category">
+
+        <option value="users">Users</option>
+
+        <option value="staff">Staff</option>
+
+        <option value="treks">Treks</option>
+
+    </select>
+
+    <label>Keyword</label><input type="text" name="keyword" required>
+
+    <button type="submit">Search</button>
+
+</form>
+
+{% if results %}
+
+<br>
+
+<table>
+
+    {% if category=="treks" %}
+
+    <tr>
+
+        <th>ID</th>
+
+        <th>Name</th>
+
+        <th>Location</th>
+
+        <th>Status</th>
+
+    </tr>
+
+    {% for trek in results %}
+
+    <tr>
+
+        <td>{{ trek.id }}</td>
+
+        <td>{{ trek.trek_name }}</td>
+
+        <td>{{ trek.location }}</td>
+
+        <td>{{ trek.status }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+    {% endif %}
+
+    {% if category=="users" or category=="staff" %}
+
+    <tr>
+
+        <th>ID</th>
+
+        <th>Name</th>
+
+        <th>Email</th>
+
+    </tr>
+
+    {% for user in results %}
+
+    <tr>
+
+        <td>{{ user.id }}</td>
+
+        <td>{{ user.name }}</td>
+
+        <td>{{ user.email }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+    {% endif %}
+
+</table>
+
+{% endif %}
+
+{% endblock %}

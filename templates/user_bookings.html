@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>My Bookings</h2>
+
+<table>
+
+<tr>
+
+    <th>Trek Name</th>
+    <th>Location</th>
+    <th>Difficulty</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Booking Date</th>
+    <th>Booking Status</th>
+    <th>Trek Status</th>
+
+</tr>
+
+{% if bookings %}
+
+    {% for booking in bookings %}
+
+    <tr>
+
+        <td>{{ booking.trek.trek_name }}</td>
+
+        <td>{{ booking.trek.location }}</td>
+
+        <td>{{ booking.trek.difficulty }}</td>
+
+        <td>{{ booking.trek.start_date }}</td>
+
+        <td>{{ booking.trek.end_date }}</td>
+
+        <td>{{ booking.booking_date }}</td>
+
+        <td>{{ booking.status }}</td>
+
+        <td>{{ booking.trek.status }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+{% else %}
+
+<tr><td colspan="8">No bookings found.</td></tr>
+
+{% endif %}
+
+</table>
+
+{% endblock %}
